@@ -1,0 +1,1631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>MarrakechStay - Discover Morocco's Imperial City</title>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+        <style>
+                /* Reset and Base Styles */
+                * {
+                        margin: 0;
+                        padding: 0;
+                        box-sizing: border-box;
+                }
+
+                body {
+                        font-family: 'Inter', sans-serif;
+                        line-height: 1.6;
+                        color: #333;
+                        background-color: #f8f9fa;
+                }
+
+                .container {
+                        max-width: 1200px;
+                        margin: 0 auto;
+                        padding: 0 20px;
+                }
+
+                /* Header Styles */
+                .header {
+                        background: white;
+                        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+                        position: sticky;
+                        top: 0;
+                        z-index: 100;
+                }
+
+                .header-content {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        padding: 1rem 0;
+                }
+
+                .logo {
+                        display: flex;
+                        align-items: center;
+                        gap: 0.75rem;
+                }
+
+                .logo i {
+                        font-size: 2rem;
+                        color: #E07A5F;
+                }
+
+                .logo-text h1 {
+                        font-size: 1.5rem;
+                        font-weight: 700;
+                        color: #2d3748;
+                }
+
+                .logo-text p {
+                        font-size: 0.875rem;
+                        color: #718096;
+                }
+
+                .contact-info {
+                        display: flex;
+                        gap: 2rem;
+                }
+
+                .contact-item {
+                        display: flex;
+                        align-items: center;
+                        gap: 0.5rem;
+                        font-size: 0.875rem;
+                        color: #718096;
+                }
+
+                .contact-item i {
+                        color: #E07A5F;
+                }
+
+                /* Hero Section */
+                .hero {
+                        height: 500px;
+                        background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+                                                            url('https://images.pexels.com/photos/3889742/pexels-photo-3889742.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop');
+                        background-size: cover;
+                        background-position: center;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        position: relative;
+                }
+
+                .hero-content {
+                        text-align: center;
+                        color: white;
+                        max-width: 800px;
+                        width: 100%;
+                }
+
+                .hero-content h2 {
+                        font-size: 3.5rem;
+                        font-weight: 700;
+                        margin-bottom: 1rem;
+                        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+                }
+
+                .hero-content p {
+                        font-size: 1.25rem;
+                        margin-bottom: 2.5rem;
+                        opacity: 0.9;
+                }
+
+                /* Search Form */
+                .search-form {
+                        background: white;
+                        border-radius: 12px;
+                        padding: 2rem;
+                        box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+                }
+
+                .search-grid {
+                        display: grid;
+                        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                        gap: 1rem;
+                        align-items: end;
+                }
+
+                .form-group {
+                        display: flex;
+                        flex-direction: column;
+                }
+
+                .form-group label {
+                        font-size: 0.875rem;
+                        font-weight: 500;
+                        color: #4a5568;
+                        margin-bottom: 0.5rem;
+                }
+
+                .form-group label i {
+                        color: #E07A5F;
+                        margin-right: 0.5rem;
+                }
+
+                .form-group input,
+                .form-group select {
+                        padding: 0.75rem;
+                        border: 2px solid #e2e8f0;
+                        border-radius: 8px;
+                        font-size: 1rem;
+                        transition: all 0.3s ease;
+                }
+
+                .form-group input:focus,
+                .form-group select:focus {
+                        outline: none;
+                        border-color: #E07A5F;
+                        box-shadow: 0 0 0 3px rgba(224, 122, 95, 0.1);
+                }
+
+                .search-btn {
+                        background: linear-gradient(135deg, #E07A5F, #d66a4a);
+                        color: white;
+                        border: none;
+                        padding: 0.75rem 1.5rem;
+                        border-radius: 8px;
+                        font-size: 1rem;
+                        font-weight: 600;
+                        cursor: pointer;
+                        transition: all 0.3s ease;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        gap: 0.5rem;
+                }
+
+                .search-btn:hover {
+                        background: linear-gradient(135deg, #d66a4a, #c5593b);
+                        transform: translateY(-2px);
+                        box-shadow: 0 10px 20px rgba(224, 122, 95, 0.3);
+                }
+
+                /* Main Content */
+                .main {
+                        padding: 3rem 0;
+                }
+
+                .content-grid {
+                        display: grid;
+                        grid-template-columns: 300px 1fr;
+                        gap: 2rem;
+                }
+
+                /* Filters Sidebar */
+                .filters {
+                        background: white;
+                        border-radius: 12px;
+                        padding: 1.5rem;
+                        height: fit-content;
+                        box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+                        position: sticky;
+                        top: 120px;
+                }
+
+                .filters-header {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        margin-bottom: 1.5rem;
+                        padding-bottom: 1rem;
+                        border-bottom: 2px solid #f7fafc;
+                }
+
+                .filters-header h3 {
+                        font-size: 1.25rem;
+                        font-weight: 600;
+                        color: #2d3748;
+                }
+
+                .clear-filters {
+                        background: none;
+                        border: none;
+                        color: #E07A5F;
+                        font-size: 0.875rem;
+                        cursor: pointer;
+                        font-weight: 500;
+                }
+
+                .clear-filters:hover {
+                        text-decoration: underline;
+                }
+
+                .filter-section {
+                        margin-bottom: 2rem;
+                }
+
+                .filter-section h4 {
+                        font-size: 1rem;
+                        font-weight: 600;
+                        color: #4a5568;
+                        margin-bottom: 1rem;
+                }
+
+                .price-range {
+                        display: grid;
+                        grid-template-columns: 1fr 1fr;
+                        gap: 0.5rem;
+                }
+
+                .price-range input {
+                        padding: 0.5rem;
+                        border: 2px solid #e2e8f0;
+                        border-radius: 6px;
+                        font-size: 0.875rem;
+                }
+
+                .price-range input:focus {
+                        outline: none;
+                        border-color: #E07A5F;
+                }
+
+                .rating-filters {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 0.75rem;
+                }
+
+                .rating-filter {
+                        display: flex;
+                        align-items: center;
+                        gap: 0.5rem;
+                        cursor: pointer;
+                }
+
+                .rating-filter input {
+                        margin: 0;
+                }
+
+                .stars {
+                        display: flex;
+                        align-items: center;
+                        gap: 0.25rem;
+                }
+
+                .stars i {
+                        color: #fbbf24;
+                        font-size: 0.875rem;
+                }
+
+                .stars span {
+                        font-size: 0.875rem;
+                        color: #718096;
+                        margin-left: 0.25rem;
+                }
+
+                .amenity-filters {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 0.75rem;
+                }
+
+                .amenity-filter {
+                        display: flex;
+                        align-items: center;
+                        gap: 0.75rem;
+                        cursor: pointer;
+                        padding: 0.5rem;
+                        border-radius: 6px;
+                        transition: background-color 0.2s ease;
+                }
+
+                .amenity-filter:hover {
+                        background-color: #f7fafc;
+                }
+
+                .amenity-filter input {
+                        margin: 0;
+                }
+
+                .amenity-filter i {
+                        color: #718096;
+                        width: 16px;
+                        text-align: center;
+                }
+
+                .amenity-filter span {
+                        font-size: 0.875rem;
+                        color: #4a5568;
+                }
+
+                /* Hotels Section */
+                .hotels-section {
+                        background: white;
+                        border-radius: 12px;
+                        padding: 2rem;
+                        box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+                }
+
+                .hotels-header {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        margin-bottom: 2rem;
+                        padding-bottom: 1rem;
+                        border-bottom: 2px solid #f7fafc;
+                }
+
+                .results-info h3 {
+                        font-size: 1.5rem;
+                        font-weight: 600;
+                        color: #2d3748;
+                        margin-bottom: 0.25rem;
+                }
+
+                .results-info span {
+                        font-size: 0.875rem;
+                        color: #718096;
+                }
+
+                .sort-options {
+                        display: flex;
+                        align-items: center;
+                        gap: 0.75rem;
+                }
+
+                .sort-options label {
+                        font-size: 0.875rem;
+                        font-weight: 500;
+                        color: #4a5568;
+                }
+
+                .sort-options select {
+                        padding: 0.5rem;
+                        border: 2px solid #e2e8f0;
+                        border-radius: 6px;
+                        font-size: 0.875rem;
+                        background: white;
+                }
+
+                /* Hotels Grid */
+                .hotels-grid {
+                        display: grid;
+                        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+                        gap: 2rem;
+                }
+
+                /* Hotel Card */
+                .hotel-card {
+                        background: white;
+                        border-radius: 12px;
+                        overflow: hidden;
+                        box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+                        transition: all 0.3s ease;
+                        border: 2px solid transparent;
+                }
+
+                .hotel-card:hover {
+                        transform: translateY(-5px);
+                        box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+                        border-color: #E07A5F;
+                }
+
+                .hotel-image {
+                        position: relative;
+                        height: 200px;
+                        overflow: hidden;
+                }
+
+                .hotel-image img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                        transition: transform 0.3s ease;
+                }
+
+                .hotel-card:hover .hotel-image img {
+                        transform: scale(1.05);
+                }
+
+                .favorite-btn {
+                        position: absolute;
+                        top: 1rem;
+                        right: 1rem;
+                        background: rgba(255,255,255,0.9);
+                        border: none;
+                        width: 40px;
+                        height: 40px;
+                        border-radius: 50%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        cursor: pointer;
+                        transition: all 0.3s ease;
+                }
+
+                .favorite-btn:hover {
+                        background: white;
+                        transform: scale(1.1);
+                }
+
+                .discount-badge {
+                        position: absolute;
+                        top: 1rem;
+                        left: 1rem;
+                        background: #dc2626;
+                        color: white;
+                        padding: 0.25rem 0.5rem;
+                        border-radius: 6px;
+                        font-size: 0.75rem;
+                        font-weight: 600;
+                }
+
+                .hotel-info {
+                        padding: 1.5rem;
+                }
+
+                .hotel-header {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: start;
+                        margin-bottom: 0.5rem;
+                }
+
+                .hotel-name {
+                        font-size: 1.125rem;
+                        font-weight: 600;
+                        color: #2d3748;
+                        line-height: 1.3;
+                }
+
+                .hotel-rating {
+                        display: flex;
+                        align-items: center;
+                        gap: 0.25rem;
+                }
+
+                .hotel-rating i {
+                        color: #fbbf24;
+                        font-size: 0.875rem;
+                }
+
+                .hotel-location {
+                        display: flex;
+                        align-items: center;
+                        gap: 0.5rem;
+                        color: #718096;
+                        font-size: 0.875rem;
+                        margin-bottom: 0.75rem;
+                }
+
+                .hotel-location i {
+                        color: #E07A5F;
+                }
+
+                .review-info {
+                        display: flex;
+                        align-items: center;
+                        gap: 0.5rem;
+                        margin-bottom: 1rem;
+                }
+
+                .rating-score {
+                        background: #3d5a80;
+                        color: white;
+                        padding: 0.25rem 0.5rem;
+                        border-radius: 6px;
+                        font-size: 0.875rem;
+                        font-weight: 600;
+                }
+
+                .review-count {
+                        font-size: 0.875rem;
+                        color: #718096;
+                }
+
+                .hotel-description {
+                        font-size: 0.875rem;
+                        color: #718096;
+                        line-height: 1.5;
+                        margin-bottom: 1rem;
+                        display: -webkit-box;
+                        -webkit-line-clamp: 2;
+                        -webkit-box-orient: vertical;
+                        overflow: hidden;
+                }
+
+                .hotel-amenities {
+                        display: flex;
+                        align-items: center;
+                        gap: 1rem;
+                        margin-bottom: 1.5rem;
+                }
+
+                .amenity-icon {
+                        color: #718096;
+                        font-size: 1rem;
+                }
+
+                .more-amenities {
+                        font-size: 0.875rem;
+                        color: #718096;
+                }
+
+                .hotel-footer {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: end;
+                }
+
+                .hotel-pricing {
+                        display: flex;
+                        flex-direction: column;
+                }
+
+                .original-price {
+                        font-size: 0.875rem;
+                        color: #718096;
+                        text-decoration: line-through;
+                }
+
+                .current-price {
+                        font-size: 1.5rem;
+                        font-weight: 700;
+                        color: #2d3748;
+                }
+
+                .price-label {
+                        font-size: 0.875rem;
+                        color: #718096;
+                }
+
+                .book-btn {
+                        background: linear-gradient(135deg, #E07A5F, #d66a4a);
+                        color: white;
+                        border: none;
+                        padding: 0.75rem 1.5rem;
+                        border-radius: 8px;
+                        font-size: 0.875rem;
+                        font-weight: 600;
+                        cursor: pointer;
+                        transition: all 0.3s ease;
+                }
+
+                .book-btn:hover {
+                        background: linear-gradient(135deg, #d66a4a, #c5593b);
+                        transform: translateY(-2px);
+                        box-shadow: 0 10px 20px rgba(224, 122, 95, 0.3);
+                }
+
+                /* Modal Styles */
+                .modal-overlay {
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        right: 0;
+                        bottom: 0;
+                        background: rgba(0,0,0,0.5);
+                        display: none;
+                        align-items: center;
+                        justify-content: center;
+                        z-index: 1000;
+                        backdrop-filter: blur(4px);
+                }
+
+                .modal-overlay.show {
+                        display: flex;
+                }
+
+                .modal {
+                        background: white;
+                        border-radius: 12px;
+                        max-width: 600px;
+                        width: 90%;
+                        max-height: 90vh;
+                        overflow-y: auto;
+                        box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+                        animation: modalIn 0.3s ease-out;
+                }
+
+                @keyframes modalIn {
+                        from {
+                                opacity: 0;
+                                transform: scale(0.9) translateY(-20px);
+                        }
+                        to {
+                                opacity: 1;
+                                transform: scale(1) translateY(0);
+                        }
+                }
+
+                .modal-header {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        padding: 1.5rem 2rem;
+                        border-bottom: 2px solid #f7fafc;
+                }
+
+                .modal-header h3 {
+                        font-size: 1.25rem;
+                        font-weight: 600;
+                        color: #2d3748;
+                }
+
+                .close-btn {
+                        background: none;
+                        border: none;
+                        font-size: 1.25rem;
+                        color: #718096;
+                        cursor: pointer;
+                        padding: 0.5rem;
+                        border-radius: 50%;
+                        transition: all 0.2s ease;
+                }
+
+                .close-btn:hover {
+                        background: #f7fafc;
+                        color: #2d3748;
+                }
+
+                .modal-content {
+                        padding: 2rem;
+                }
+
+                .booking-form {
+                        display: grid;
+                        gap: 1.5rem;
+                }
+
+                .form-row {
+                        display: grid;
+                        grid-template-columns: 1fr 1fr;
+                        gap: 1rem;
+                }
+
+                .booking-summary {
+                        background: #f7fafc;
+                        padding: 1.5rem;
+                        border-radius: 8px;
+                        margin: 1.5rem 0;
+                }
+
+                .booking-summary h4 {
+                        font-size: 1rem;
+                        font-weight: 600;
+                        margin-bottom: 1rem;
+                        color: #2d3748;
+                }
+
+                .summary-row {
+                        display: flex;
+                        justify-content: space-between;
+                        margin-bottom: 0.5rem;
+                        font-size: 0.875rem;
+                }
+
+                .summary-total {
+                        display: flex;
+                        justify-content: space-between;
+                        font-size: 1.125rem;
+                        font-weight: 600;
+                        padding-top: 1rem;
+                        border-top: 2px solid #e2e8f0;
+                        color: #2d3748;
+                }
+
+                .summary-total .price {
+                        color: #E07A5F;
+                }
+
+                .modal-actions {
+                        display: flex;
+                        gap: 1rem;
+                        margin-top: 1.5rem;
+                }
+
+                .btn {
+                        flex: 1;
+                        padding: 0.75rem 1.5rem;
+                        border: none;
+                        border-radius: 8px;
+                        font-size: 1rem;
+                        font-weight: 600;
+                        cursor: pointer;
+                        transition: all 0.3s ease;
+                }
+
+                .btn-secondary {
+                        background: #e2e8f0;
+                        color: #4a5568;
+                }
+
+                .btn-secondary:hover {
+                        background: #cbd5e0;
+                }
+
+                .btn-primary {
+                        background: linear-gradient(135deg, #E07A5F, #d66a4a);
+                        color: white;
+                }
+
+                .btn-primary:hover {
+                        background: linear-gradient(135deg, #d66a4a, #c5593b);
+                        transform: translateY(-2px);
+                        box-shadow: 0 10px 20px rgba(224, 122, 95, 0.3);
+                }
+
+                .btn:disabled {
+                        background: #cbd5e0;
+                        color: #a0aec0;
+                        cursor: not-allowed;
+                        transform: none;
+                        box-shadow: none;
+                }
+
+                .success-content {
+                        text-align: center;
+                        padding: 2rem;
+                }
+
+                .success-icon {
+                        width: 80px;
+                        height: 80px;
+                        background: #10b981;
+                        border-radius: 50%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        margin: 0 auto 1.5rem;
+                }
+
+                .success-icon i {
+                        font-size: 2rem;
+                        color: white;
+                }
+
+                .success-title {
+                        font-size: 1.5rem;
+                        font-weight: 600;
+                        color: #10b981;
+                        margin-bottom: 0.5rem;
+                }
+
+                .success-message {
+                        color: #718096;
+                        margin-bottom: 1.5rem;
+                }
+
+                /* Footer */
+                .footer {
+                        background: #2d3748;
+                        color: white;
+                        margin-top: 4rem;
+                }
+
+                .footer-content {
+                        display: grid;
+                        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                        gap: 2rem;
+                        padding: 3rem 0 2rem;
+                }
+
+                .footer-section h4 {
+                        font-size: 1.125rem;
+                        font-weight: 600;
+                        margin-bottom: 1rem;
+                        color: #E07A5F;
+                }
+
+                .footer-section p {
+                        color: #a0aec0;
+                        line-height: 1.6;
+                }
+
+                .footer-section ul {
+                        list-style: none;
+                }
+
+                .footer-section ul li {
+                        margin-bottom: 0.5rem;
+                }
+
+                .footer-section ul li a {
+                        color: #a0aec0;
+                        text-decoration: none;
+                        transition: color 0.2s ease;
+                }
+
+                .footer-section ul li a:hover {
+                        color: #E07A5F;
+                }
+
+                .footer-bottom {
+                        border-top: 1px solid #4a5568;
+                        padding: 1.5rem 0;
+                        text-align: center;
+                        color: #a0aec0;
+                }
+
+                /* Responsive Design */
+                @media (max-width: 1024px) {
+                        .content-grid {
+                                grid-template-columns: 250px 1fr;
+                        }
+
+                        .hero-content h2 {
+                                font-size: 2.5rem;
+                        }
+                }
+
+                @media (max-width: 768px) {
+                        .container {
+                                padding: 0 15px;
+                        }
+
+                        .header-content {
+                                flex-direction: column;
+                                gap: 1rem;
+                                text-align: center;
+                        }
+
+                        .contact-info {
+                                flex-direction: column;
+                                gap: 0.5rem;
+                        }
+
+                        .hero-content h2 {
+                                font-size: 2rem;
+                        }
+
+                        .hero-content p {
+                                font-size: 1rem;
+                        }
+
+                        .search-form {
+                                padding: 1.5rem;
+                        }
+
+                        .search-grid {
+                                grid-template-columns: 1fr;
+                                gap: 1rem;
+                        }
+
+                        .content-grid {
+                                grid-template-columns: 1fr;
+                                gap: 1.5rem;
+                        }
+
+                        .hotels-header {
+                                flex-direction: column;
+                                gap: 1rem;
+                                align-items: flex-start;
+                        }
+
+                        .hotels-grid {
+                                grid-template-columns: 1fr;
+                        }
+
+                        .form-row {
+                                grid-template-columns: 1fr;
+                        }
+
+                        .modal {
+                                width: 95%;
+                                margin: 20px;
+                        }
+
+                        .modal-content {
+                                padding: 1.5rem;
+                        }
+                }
+
+                @media (max-width: 480px) {
+                        .hero {
+                                height: 400px;
+                        }
+
+                        .hero-content h2 {
+                                font-size: 1.75rem;
+                        }
+
+                        .search-form {
+                                padding: 1rem;
+                        }
+
+                        .hotel-info {
+                                padding: 1rem;
+                        }
+
+                        .filters {
+                                padding: 1rem;
+                        }
+
+                        .hotels-section {
+                                padding: 1.5rem;
+                        }
+                }
+        </style>
+</head>
+<body>
+        <!-- Header -->
+        <header class="header">
+                <div class="container">
+                        <div class="header-content">
+                                <div class="logo">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        <div class="logo-text">
+                                                <h1>MarrakechStay</h1>
+                                                <p>Discover Morocco's Red City</p>
+                                        </div>
+                                </div>
+                                <div class="contact-info">
+                                        <div class="contact-item">
+                                                <i class="fas fa-phone"></i>
+                                                <span>+212 524 123 456</span>
+                                        </div>
+                                        <div class="contact-item">
+                                                <i class="fas fa-envelope"></i>
+                                                <span>info@marrakechstay.com</span>
+                                        </div>
+                                </div>
+                        </div>
+                </div>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero">
+                <div class="hero-overlay"></div>
+                <div class="container">
+                        <div class="hero-content">
+                                <h2>Discover Marrakech</h2>
+                                <p>Experience the magic of Morocco's imperial city</p>
+                                <div class="search-form">
+                                        <div class="search-grid">
+                                                <div class="form-group">
+                                                        <label><i class="fas fa-calendar"></i> Check-in</label>
+                                                        <input type="date" id="checkin" required>
+                                                </div>
+                                                <div class="form-group">
+                                                        <label><i class="fas fa-calendar"></i> Check-out</label>
+                                                        <input type="date" id="checkout" required>
+                                                </div>
+                                                <div class="form-group">
+                                                        <label><i class="fas fa-users"></i> Guests</label>
+                                                        <select id="guests">
+                                                                <option value="1">1 Guest</option>
+                                                                <option value="2" selected>2 Guests</option>
+                                                                <option value="3">3 Guests</option>
+                                                                <option value="4">4 Guests</option>
+                                                                <option value="5">5 Guests</option>
+                                                                <option value="6">6 Guests</option>
+                                                        </select>
+                                                </div>
+                                                <button class="search-btn" onclick="searchHotels()">
+                                                        <i class="fas fa-search"></i>
+                                                        Search Hotels
+                                                </button>
+                                        </div>
+                                </div>
+                        </div>
+                </div>
+        </section>
+
+        <!-- Main Content -->
+        <main class="main">
+                <div class="container">
+                        <div class="content-grid">
+                                <!-- Filters Sidebar -->
+                                <aside class="filters">
+                                        <div class="filters-header">
+                                                <h3>Filters</h3>
+                                                <button class="clear-filters" onclick="clearFilters()">Clear All</button>
+                                        </div>
+
+                                        <!-- Price Range -->
+                                        <div class="filter-section">
+                                                <h4>Price per night (MAD)</h4>
+                                                <div class="price-range">
+                                                        <input type="number" id="min-price" placeholder="Min" min="0">
+                                                        <input type="number" id="max-price" placeholder="Max" min="0">
+                                                </div>
+                                        </div>
+
+                                        <!-- Star Rating -->
+                                        <div class="filter-section">
+                                                <h4>Star Rating</h4>
+                                                <div class="rating-filters">
+                                                        <label class="rating-filter">
+                                                                <input type="checkbox" data-rating="5">
+                                                                <div class="stars">
+                                                                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                                                        <span>& up</span>
+                                                                </div>
+                                                        </label>
+                                                        <label class="rating-filter">
+                                                                <input type="checkbox" data-rating="4">
+                                                                <div class="stars">
+                                                                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                                                        <span>& up</span>
+                                                                </div>
+                                                        </label>
+                                                        <label class="rating-filter">
+                                                                <input type="checkbox" data-rating="3">
+                                                                <div class="stars">
+                                                                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                                                        <span>& up</span>
+                                                                </div>
+                                                        </label>
+                                                </div>
+                                        </div>
+
+                                        <!-- Amenities -->
+                                        <div class="filter-section">
+                                                <h4>Amenities</h4>
+                                                <div class="amenity-filters">
+                                                        <label class="amenity-filter">
+                                                                <input type="checkbox" data-amenity="wifi">
+                                                                <i class="fas fa-wifi"></i>
+                                                                <span>Free WiFi</span>
+                                                        </label>
+                                                        <label class="amenity-filter">
+                                                                <input type="checkbox" data-amenity="parking">
+                                                                <i class="fas fa-car"></i>
+                                                                <span>Free Parking</span>
+                                                        </label>
+                                                        <label class="amenity-filter">
+                                                                <input type="checkbox" data-amenity="pool">
+                                                                <i class="fas fa-swimming-pool"></i>
+                                                                <span>Pool</span>
+                                                        </label>
+                                                        <label class="amenity-filter">
+                                                                <input type="checkbox" data-amenity="restaurant">
+                                                                <i class="fas fa-utensils"></i>
+                                                                <span>Restaurant</span>
+                                                        </label>
+                                                        <label class="amenity-filter">
+                                                                <input type="checkbox" data-amenity="spa">
+                                                                <i class="fas fa-spa"></i>
+                                                                <span>Spa</span>
+                                                        </label>
+                                                </div>
+                                        </div>
+                                </aside>
+
+                                <!-- Hotels Section -->
+                                <section class="hotels-section">
+                                        <div class="hotels-header">
+                                                <div class="results-info">
+                                                        <h3>Hotels in Marrakech</h3>
+                                                        <span id="results-count">12 hotels found</span>
+                                                </div>
+                                                <div class="sort-options">
+                                                        <label>Sort by:</label>
+                                                        <select id="sort-select" onchange="sortHotels()">
+                                                                <option value="price-low">Price: Low to High</option>
+                                                                <option value="price-high">Price: High to Low</option>
+                                                                <option value="rating">Rating</option>
+                                                                <option value="popularity">Popularity</option>
+                                                        </select>
+                                                </div>
+                                        </div>
+
+                                        <div class="hotels-grid" id="hotels-container">
+                                                <!-- Hotels will be populated by JavaScript -->
+                                        </div>
+                                </section>
+                        </div>
+                </div>
+        </main>
+
+        <!-- Booking Modal -->
+        <div class="modal-overlay" id="booking-modal">
+                <div class="modal">
+                        <div class="modal-header">
+                                <h3 id="modal-title">Book Hotel</h3>
+                                <button class="close-btn" onclick="closeModal()">
+                                        <i class="fas fa-times"></i>
+                                </button>
+                        </div>
+                        <div class="modal-content" id="modal-content">
+                                <!-- Content will be populated by JavaScript -->
+                        </div>
+                </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+                <div class="container">
+                        <div class="footer-content">
+                                <div class="footer-section">
+                                        <h4>MarrakechStay</h4>
+                                        <p>Your gateway to discovering the beauty and culture of Marrakech. We offer the best hotel booking experience with carefully selected accommodations.</p>
+                                </div>
+                                <div class="footer-section">
+                                        <h4>Quick Links</h4>
+                                        <ul>
+                                                <li><a href="#">About Us</a></li>
+                                                <li><a href="#">Contact</a></li>
+                                                <li><a href="#">Terms & Conditions</a></li>
+                                                <li><a href="#">Privacy Policy</a></li>
+                                        </ul>
+                                </div>
+                                <div class="footer-section">
+                                        <h4>Contact Info</h4>
+                                        <div class="contact-item">
+                                                <i class="fas fa-map-marker-alt"></i>
+                                                <span>Marrakech, Morocco</span>
+                                        </div>
+                                        <div class="contact-item">
+                                                <i class="fas fa-phone"></i>
+                                                <span>+212 524 123 456</span>
+                                        </div>
+                                        <div class="contact-item">
+                                                <i class="fas fa-envelope"></i>
+                                                <span>info@marrakechstay.com</span>
+                                        </div>
+                                </div>
+                        </div>
+                        <div class="footer-bottom">
+                                <p>&copy; 2024 MarrakechStay. All rights reserved.</p>
+                        </div>
+                </div>
+        </footer>
+
+        <script>
+                // Hotel data
+                const hotels = [
+                        {
+                                id: 1,
+                                name: "La Mamounia Palace",
+                                image: "https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=800",
+                                rating: 5,
+                                reviewCount: 2847,
+                                price: 2500,
+                                originalPrice: 3200,
+                                location: "Medina, Marrakech",
+                                amenities: ["wifi", "parking", "pool", "restaurant", "spa"],
+                                description: "Legendary palace hotel in the heart of Marrakech, offering unparalleled luxury and authentic Moroccan hospitality with stunning gardens and world-class amenities."
+                        },
+                        {
+                                id: 2,
+                                name: "Royal Mansour Marrakech",
+                                image: "https://images.pexels.com/photos/271639/pexels-photo-271639.jpeg?auto=compress&cs=tinysrgb&w=800",
+                                rating: 5,
+                                reviewCount: 1923,
+                                price: 4200,
+                                location: "Medina, Marrakech",
+                                amenities: ["wifi", "parking", "pool", "restaurant", "spa"],
+                                description: "Ultra-luxury resort featuring private riads, exceptional dining, and the finest Moroccan craftsmanship in every detail."
+                        },
+                        {
+                                id: 3,
+                                name: "Riad BE Marrakech",
+                                image: "https://images.pexels.com/photos/1134176/pexels-photo-1134176.jpeg?auto=compress&cs=tinysrgb&w=800",
+                                rating: 4,
+                                reviewCount: 856,
+                                price: 850,
+                                originalPrice: 1100,
+                                location: "Medina, Marrakech",
+                                amenities: ["wifi", "pool", "restaurant"],
+                                description: "Boutique riad combining traditional Moroccan architecture with modern luxury, featuring a beautiful central courtyard and rooftop terrace."
+                        },
+                        {
+                                id: 4,
+                                name: "Hotel Sahrai",
+                                image: "https://images.pexels.com/photos/1134180/pexels-photo-1134180.jpeg?auto=compress&cs=tinysrgb&w=800",
+                                rating: 4,
+                                reviewCount: 1245,
+                                price: 1200,
+                                location: "Palmeraie, Marrakech",
+                                amenities: ["wifi", "parking", "pool", "restaurant", "spa"],
+                                description: "Contemporary luxury hotel with stunning Atlas Mountains views, featuring modern design and traditional Moroccan hospitality."
+                        },
+                        {
+                                id: 5,
+                                name: "Riad Kniza",
+                                image: "https://images.pexels.com/photos/2017424/pexels-photo-2017424.jpeg?auto=compress&cs=tinysrgb&w=800",
+                                rating: 4,
+                                reviewCount: 674,
+                                price: 680,
+                                originalPrice: 850,
+                                location: "Medina, Marrakech",
+                                amenities: ["wifi", "restaurant", "spa"],
+                                description: "Charming traditional riad in the heart of the medina, offering authentic Moroccan experience with modern comforts."
+                        },
+                        {
+                                id: 6,
+                                name: "Four Seasons Resort",
+                                image: "https://images.pexels.com/photos/261102/pexels-photo-261102.jpeg?auto=compress&cs=tinysrgb&w=800",
+                                rating: 5,
+                                reviewCount: 1567,
+                                price: 3800,
+                                location: "Palmeraie, Marrakech",
+                                amenities: ["wifi", "parking", "pool", "restaurant", "spa"],
+                                description: "Luxury resort set in beautiful gardens with exceptional service, multiple pools, and world-class spa facilities."
+                        },
+                        {
+                                id: 7,
+                                name: "Riad Yasmine",
+                                image: "https://images.pexels.com/photos/1450363/pexels-photo-1450363.jpeg?auto=compress&cs=tinysrgb&w=800",
+                                rating: 3,
+                                reviewCount: 423,
+                                price: 420,
+                                originalPrice: 550,
+                                location: "Medina, Marrakech",
+                                amenities: ["wifi", "restaurant"],
+                                description: "Traditional riad offering authentic Moroccan experience with beautiful courtyard and rooftop terrace."
+                        },
+                        {
+                                id: 8,
+                                name: "Hotel Atlas Asni",
+                                image: "https://images.pexels.com/photos/338504/pexels-photo-338504.jpeg?auto=compress&cs=tinysrgb&w=800",
+                                rating: 4,
+                                reviewCount: 892,
+                                price: 950,
+                                location: "Gueliz, Marrakech",
+                                amenities: ["wifi", "parking", "pool", "restaurant"],
+                                description: "Modern hotel in the new city with contemporary amenities and easy access to both traditional and modern attractions."
+                        },
+                        {
+                                id: 9,
+                                name: "Villa des Orangers",
+                                image: "https://images.pexels.com/photos/1001965/pexels-photo-1001965.jpeg?auto=compress&cs=tinysrgb&w=800",
+                                rating: 5,
+                                reviewCount: 1234,
+                                price: 2200,
+                                location: "Medina, Marrakech",
+                                amenities: ["wifi", "pool", "restaurant", "spa"],
+                                description: "Elegant boutique hotel combining luxury with authentic Moroccan design, featuring beautiful gardens and exceptional service."
+                        },
+                        {
+                                id: 10,
+                                name: "Riad Farnatchi",
+                                image: "https://images.pexels.com/photos/2017509/pexels-photo-2017509.jpeg?auto=compress&cs=tinysrgb&w=800",
+                                rating: 4,
+                                reviewCount: 756,
+                                price: 1350,
+                                originalPrice: 1650,
+                                location: "Medina, Marrakech",
+                                amenities: ["wifi", "pool", "restaurant", "spa"],
+                                description: "Luxury riad with stunning architecture, beautiful courtyard, and rooftop terrace overlooking the medina."
+                        },
+                        {
+                                id: 11,
+                                name: "Hotel Imperial Borj",
+                                image: "https://images.pexels.com/photos/3889742/pexels-photo-3889742.jpeg?auto=compress&cs=tinysrgb&w=800",
+                                rating: 3,
+                                reviewCount: 543,
+                                price: 380,
+                                location: "Gueliz, Marrakech",
+                                amenities: ["wifi", "parking", "restaurant"],
+                                description: "Comfortable hotel in the modern district with good amenities and easy access to major attractions."
+                        },
+                        {
+                                id: 12,
+                                name: "Selman Marrakech",
+                                image: "https://images.pexels.com/photos/1134187/pexels-photo-1134187.jpeg?auto=compress&cs=tinysrgb&w=800",
+                                rating: 5,
+                                reviewCount: 987,
+                                price: 3200,
+                                location: "Palmeraie, Marrakech",
+                                amenities: ["wifi", "parking", "pool", "restaurant", "spa"],
+                                description: "Ultra-luxury resort with stunning architecture, beautiful pools, and exceptional dining experiences."
+                        }
+                ];
+
+                let filteredHotels = [...hotels];
+                let currentBookingHotel = null;
+
+                // Initialize the page
+                document.addEventListener('DOMContentLoaded', function() {
+                        renderHotels(filteredHotels);
+                        setupEventListeners();
+                });
+
+                // Setup event listeners
+                function setupEventListeners() {
+                        // Price range filters
+                        document.getElementById('min-price').addEventListener('input', applyFilters);
+                        document.getElementById('max-price').addEventListener('input', applyFilters);
+
+                        // Rating filters
+                        document.querySelectorAll('[data-rating]').forEach(checkbox => {
+                                checkbox.addEventListener('change', applyFilters);
+                        });
+
+                        // Amenity filters
+                        document.querySelectorAll('[data-amenity]').forEach(checkbox => {
+                                checkbox.addEventListener('change', applyFilters);
+                        });
+                }
+
+                // Render hotels
+                function renderHotels(hotelsToRender) {
+                        const container = document.getElementById('hotels-container');
+                        const resultsCount = document.getElementById('results-count');
+
+                        resultsCount.textContent = `${hotelsToRender.length} hotels found`;
+
+                        container.innerHTML = hotelsToRender.map(hotel => {
+                                const amenityIcons = hotel.amenities.slice(0, 3).map(amenity => {
+                                        const iconMap = {
+                                                'wifi': 'fas fa-wifi',
+                                                'parking': 'fas fa-car',
+                                                'pool': 'fas fa-swimming-pool',
+                                                'restaurant': 'fas fa-utensils',
+                                                'spa': 'fas fa-spa'
+                                        };
+                                        return `<i class="amenity-icon ${iconMap[amenity]}"></i>`;
+                                }).join('');
+
+                                const moreAmenities = hotel.amenities.length > 3
+                                        ? `<span class="more-amenities">+${hotel.amenities.length - 3} more</span>`
+                                        : '';
+
+                                return `
+                                        <div class="hotel-card">
+                                                <div class="hotel-image">
+                                                        <img src="${hotel.image}" alt="${hotel.name}">
+                                                        <button class="favorite-btn">
+                                                                <i class="far fa-heart"></i>
+                                                        </button>
+                                                        ${hotel.originalPrice ? `<div class="discount-badge">Save ${Math.round(((hotel.originalPrice - hotel.price) / hotel.originalPrice) * 100)}%</div>` : ''}
+                                                </div>
+
+                                                <div class="hotel-info">
+                                                        <div class="hotel-header">
+                                                                <h3 class="hotel-name">${hotel.name}</h3>
+                                                                <div class="hotel-rating">
+                                                                        ${Array.from({length: hotel.rating}, () => '<i class="fas fa-star"></i>').join('')}
+                                                                </div>
+                                                        </div>
+
+                                                        <div class="hotel-location">
+                                                                <i class="fas fa-map-marker-alt"></i>
+                                                                ${hotel.location}
+                                                        </div>
+
+                                                        <div class="review-info">
+                                                                <span class="rating-score">${hotel.rating.toFixed(1)}</span>
+                                                                <span class="review-count">(${hotel.reviewCount.toLocaleString()} reviews)</span>
+                                                        </div>
+
+                                                        <p class="hotel-description">${hotel.description}</p>
+
+                                                        <div class="hotel-amenities">
+                                                                ${amenityIcons}
+                                                                ${moreAmenities}
+                                                        </div>
+
+                                                        <div class="hotel-footer">
+                                                                <div class="hotel-pricing">
+                                                                        ${hotel.originalPrice ? `<span class="original-price">MAD ${hotel.originalPrice.toLocaleString()}</span>` : ''}
+                                                                        <span class="current-price">MAD ${hotel.price.toLocaleString()}</span>
+                                                                        <span class="price-label">per night</span>
+                                                                </div>
+
+                                                                <button class="book-btn" onclick="openBookingModal(${hotel.id})">
+                                                                        Book Now
+                                                                </button>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                `;
+                        }).join('');
+                }
+
+                // Apply filters
+                function applyFilters() {
+                        const minPrice = parseInt(document.getElementById('min-price').value) || 0;
+                        const maxPrice = parseInt(document.getElementById('max-price').value) || Infinity;
+
+                        const selectedRatings = Array.from(document.querySelectorAll('[data-rating]:checked'))
+                                .map(cb => parseInt(cb.dataset.rating));
+
+                        const selectedAmenities = Array.from(document.querySelectorAll('[data-amenity]:checked'))
+                                .map(cb => cb.dataset.amenity);
+
+                        filteredHotels = hotels.filter(hotel => {
+                                // Price filter
+                                if (hotel.price < minPrice || hotel.price > maxPrice) return false;
+
+                                // Rating filter
+                                if (selectedRatings.length > 0 && !selectedRatings.some(rating => hotel.rating >= rating)) return false;
+
+                                // Amenities filter
+                                if (selectedAmenities.length > 0 && !selectedAmenities.every(amenity => hotel.amenities.includes(amenity))) return false;
+
+                                return true;
+                        });
+
+                        renderHotels(filteredHotels);
+                }
+
+                // Clear filters
+                function clearFilters() {
+                        document.getElementById('min-price').value = '';
+                        document.getElementById('max-price').value = '';
+                        document.querySelectorAll('[data-rating], [data-amenity]').forEach(cb => cb.checked = false);
+                        filteredHotels = [...hotels];
+                        renderHotels(filteredHotels);
+                }
+
+                // Sort hotels
+                function sortHotels() {
+                        const sortBy = document.getElementById('sort-select').value;
+
+                        filteredHotels.sort((a, b) => {
+                                switch(sortBy) {
+                                        case 'price-low':
+                                                return a.price - b.price;
+                                        case 'price-high':
+                                                return b.price - a.price;
+                                        case 'rating':
+                                                return b.rating - a.rating;
+                                        case 'popularity':
+                                                return b.reviewCount - a.reviewCount;
+                                        default:
+                                                return 0;
+                                }
+                        });
+
+                        renderHotels(filteredHotels);
+                }
+
+                // Search hotels
+                function searchHotels() {
+                        const checkin = document.getElementById('checkin').value;
+                        const checkout = document.getElementById('checkout').value;
+                        const guests = document.getElementById('guests').value;
+
+                        if (!checkin || !checkout) {
+                                alert('Please select check-in and check-out dates');
+                                return;
+                        }
+
+                        // For demo purposes, just scroll to results
+                        document.querySelector('.main').scrollIntoView({ behavior: 'smooth' });
+                }
+
+                // Open booking modal
+                function openBookingModal(hotelId) {
+                        currentBookingHotel = hotels.find(h => h.id === hotelId);
+                        const modal = document.getElementById('booking-modal');
+                        const modalTitle = document.getElementById('modal-title');
+                        const modalContent = document.getElementById('modal-content');
+
+                        modalTitle.textContent = `Book ${currentBookingHotel.name}`;
+                        modalContent.innerHTML = generateBookingForm();
+                        modal.classList.add('show');
+                        document.body.style.overflow = 'hidden';
+                }
+
+                // Close modal
+                function closeModal() {
+                        const modal = document.getElementById('booking-modal');
+                        modal.classList.remove('show');
+                        document.body.style.overflow = 'auto';
+                        currentBookingHotel = null;
+                }
+
+                // Generate booking form
+                function generateBookingForm() {
+                        return `
+                                <div class="booking-form">
+                                        <div class="form-row">
+                                                <div class="form-group">
+                                                        <label><i class="fas fa-calendar"></i> Check-in Date</label>
+                                                        <input type="date" id="booking-checkin" required>
+                                                </div>
+                                                <div class="form-group">
+                                                        <label><i class="fas fa-calendar"></i> Check-out Date</label>
+                                                        <input type="date" id="booking-checkout" required>
+                                                </div>
+                                        </div>
+
+                                        <div class="form-row">
+                                                <div class="form-group">
+                                                        <label><i class="fas fa-users"></i> Number of Guests</label>
+                                                        <select id="booking-guests">
+                                                                <option value="1">1 Guest</option>
+                                                                <option value="2" selected>2 Guests</option>
+                                                                <option value="3">3 Guests</option>
+                                                                <option value="4">4 Guests</option>
+                                                                <option value="5">5 Guests</option>
+                                                                <option value="6">6 Guests</option>
+                                                        </select>
+                                                </div>
+                                                <div class="form-group">
+                                                        <label>Room Type</label>
+                                                        <select id="room-type">
+                                                                <option value="standard">Standard Room</option>
+                                                                <option value="deluxe">Deluxe Room (+50%)</option>
+                                                                <option value="suite">Suite (+100%)</option>
+                                                        </select>
+                                                </div>
+                                        </div>
+
+                                        <div class="form-row">
+                                                <div class="form-group">
+                                                        <label>First Name</label>
+                                                        <input type="text" id="first-name" required>
+                                                </div>
+                                                <div class="form-group">
+                                                        <label>Last Name</label>
+                                                        <input type="text" id="last-name" required>
+                                                </div>
+                                        </div>
+
+                                        <div class="form-row">
+                                                <div class="form-group">
+                                                        <label>Email</label>
+                                                        <input type="email" id="email" required>
+                                                </div>
+                                                <div class="form-group">
+                                                        <label>Phone Number</label>
+                                                        <input type="tel" id="phone" required>
+                                                </div>
+                                        </div>
+
+                                        <div class="booking-summary">
+                                                <h4>Booking Summary</h4>
+                                                <div class="summary-row">
+                                                        <span>Hotel:</span>
+                                                        <span>${currentBookingHotel.name}</span>
+                                                </div>
+                                                <div class="summary-row">
+                                                        <span>Location:</span>
+                                                        <span>${currentBookingHotel.location}</span>
+                                                </div>
+                                                <div class="summary-row">
+                                                        <span>Base Price:</span>
+                                                        <span>MAD ${currentBookingHotel.price.toLocaleString()}/night</span>
+                                                </div>
+                                                <div class="summary-total">
+                                                        <span>Total:</span>
+                                                        <span class="price" id="total-price">MAD ${currentBookingHotel.price.toLocaleString()}</span>
+                                                </div>
+                                        </div>
+                                </div>
+
+                                <div class="modal-actions">
+                                        <button type="button" class="btn btn-secondary" onclick="closeModal()">Cancel</button>
+                                        <button type="button" class="btn btn-primary" onclick="completeBooking()">Confirm Booking</button>
+                                </div>
+                        `;
+                }
+
+                // Complete booking
+                function completeBooking() {
+                        const firstName = document.getElementById('first-name').value;
+                        const lastName = document.getElementById('last-name').value;
+                        const email = document.getElementById('email').value;
+                        const phone = document.getElementById('phone').value;
+
+                        if (!firstName || !lastName || !email || !phone) {
+                                alert('Please fill in all required fields');
+                                return;
+                        }
+
+                        // Show success message
+                        const modalContent = document.getElementById('modal-content');
+                        modalContent.innerHTML = `
+                                <div class="success-content">
+                                        <div class="success-icon">
+                                                <i class="fas fa-check"></i>
+                                        </div>
+                                        <h3 class="success-title">Booking Confirmed!</h3>
+                                        <p class="success-message">
+                                                Thank you for booking with MarrakechStay. A confirmation email has been sent to ${email}.
+                                        </p>
+                                        <button class="btn btn-primary" onclick="closeModal()">Close</button>
+                                </div>
+                        `;
+                }
+
+                // Click outside modal to close
+                document.getElementById('booking-modal').addEventListener('click', function(e) {
+                        if (e.target === this) {
+                                closeModal();
+                        }
+                });
+        </script>
+</body>
+</html>
